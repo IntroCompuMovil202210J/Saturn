@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".perfilActivity"
+    android:background="@drawable/listgrad">
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="534dp"
+        android:layout_gravity="center"
+        android:rotation="-45"
+        android:src="@drawable/vector" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/marca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/ruslandisplay_regular"
+            android:text="@string/app_name"
+            android:textColor="@color/yellow"
+            android:textSize="48sp"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/nick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="30dp"
+                    android:fontFamily="@font/rubik_variable_wght"
+                    android:text="@string/nickname"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/perfil"
+                    android:layout_width="300dp"
+                    android:layout_height="150dp"
+                    android:layout_below="@id/nick"
+                    android:scaleType="centerInside"
+                    android:adjustViewBounds="true"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/super_mario" />
+
+                <TextView
+                    android:id="@+id/laNombre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/perfil"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/rubik_variable_wght"
+                    android:text="@string/nombre"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/Nom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/perfil"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_toRightOf="@+id/laNombre"
+                    android:fontFamily="@font/rubik_variable_wght"
+                    android:text="Albeiro"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/laPlataformas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/laNombre"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/rubik_variable_wght"
+                    android:text="@string/plataformas"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/swich"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/laPlataformas"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/rubik_variable_wght"
+                    android:text="- Switch"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/steam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/swich"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/rubik_variable_wght"
+                    android:text="- Steam"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="9"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@color/darkblue">
+
+
+            <ImageButton
+                android:id="@+id/arcade"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/controlrecto"
+                android:background="@null"
+                />
+
+            <ImageButton
+                android:id="@+id/mapa"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/mapa" />
+
+            <ImageButton
+                android:id="@+id/chats"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/group" />
+
+            <ImageButton
+                android:id="@+id/persona"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/colorstroke"
+                android:src="@drawable/hito" />
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>

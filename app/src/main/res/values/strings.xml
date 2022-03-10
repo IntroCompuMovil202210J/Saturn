@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Saturn</string>
+    <string name="nombre">Nombre:</string>
+    <string name="iniciar_sesion">Iniciar sesion</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="saturn">SATURN</string>
+    <string name="edad">Edad:</string>
+    <string name="correo">Correo:</string>
+    <string name="nickname">Nickname:</string>
+    <string name="contrase_a">Contraseña:</string>
+    <string name="plataformas">Plataformas:</string>
+    <string name="siguiente">Siguiente</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="registro">Registro</string>
+    <string name="foto_de_perfil">Foto de perfil:</string>
+    <string name="seleccionar_imagen">Seleccionar imagen</string>
+    <string name="title_activity_login">loginActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+</resources>
