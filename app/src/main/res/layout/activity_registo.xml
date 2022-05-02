@@ -166,7 +166,7 @@
                 android:inputType="number" />
 
             <EditText
-                android:id="@+id/editEmail"
+                android:id="@+id/email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/editEdad"
@@ -181,7 +181,7 @@
                 android:id="@+id/editNick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editEmail"
+                android:layout_below="@id/email"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="30dp"
                 android:layout_toEndOf="@id/laNickname"

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "132708502828",
+    "project_id": "saturn-compumovil",
+    "storage_bucket": "saturn-compumovil.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132708502828:android:fb42229c690701f0357089",
+        "android_client_info": {
+          "package_name": "com.example.saturn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132708502828-5ng3ngvqr3bpaosu225gc77u910c4hdk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCehAI8xJaShlHjJwGCJ_rZe0uEFKmCx4A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132708502828-5ng3ngvqr3bpaosu225gc77u910c4hdk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

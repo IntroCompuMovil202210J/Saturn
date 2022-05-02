@@ -44,10 +44,10 @@
             android:textSize="20sp"/>
 
         <EditText
-            android:id="@+id/editEmail"
+            android:id="@+id/email"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:ems="10"
             android:background="@drawable/normalradius"
             android:inputType="textEmailAddress"
@@ -67,15 +67,15 @@
             />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/contra"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/normalradius"
-            android:paddingHorizontal="15dp"
             android:ems="10"
+            android:hint="Ingrese la contraseña"
             android:inputType="textPersonName"
-            android:hint="Ingrese la contraseña" />
+            android:paddingHorizontal="15dp" />
 
         <Button
             android:id="@+id/iniciar"
@@ -93,7 +93,7 @@
             android:textSize="20sp"/>
 
         <Button
-            android:id="@+id/funar"
+            android:id="@+id/retroceder"
             android:background="@drawable/colorstroke"
             android:layout_marginTop="25dp"
             android:layout_width="wrap_content"
