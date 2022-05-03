@@ -35,7 +35,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2">
+            android:layout_weight="3">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -58,9 +58,11 @@
                     android:layout_width="300dp"
                     android:layout_height="150dp"
                     android:layout_below="@id/nick"
-                    android:scaleType="centerInside"
-                    android:adjustViewBounds="true"
                     android:layout_centerHorizontal="true"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/colorstroke"
+                    android:padding="5dp"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/super_mario" />
 
                 <TextView
@@ -130,9 +132,21 @@
 
         </ScrollView>
 
+        <Button
+            android:id="@+id/logoutbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="1dp"
+            android:layout_weight="0"
+            android:background="@drawable/normalradius"
+            android:backgroundTint="@color/red"
+            android:paddingHorizontal="20dp"
+            android:text="Cerrar sesion" />
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_weight="9"
+            android:layout_weight="10"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:background="@color/darkblue">

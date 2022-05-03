@@ -3,8 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.276" />
+        <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/drawable/bolita_colorida.xml" value="0.276" />
+        <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/drawable/colorstroke.xml" value="0.276" />
+        <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/drawable/ic_launcher_background.xml" value="0.276" />
+        <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/drawable/listgrad.xml" value="0.276" />
+        <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/drawable/normalradius.xml" value="0.276" />
+        <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/drawable/rcv_msg.xml" value="0.276" />
+        <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/drawable/snd_msg.xml" value="0.276" />
+        <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/drawable/two_corners_rec.xml" value="0.276" />
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/activity_log.xml" value="0.33" />
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/activity_map.xml" value="0.33" />
+        <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/activity_perfil.xml" value="0.3625" />
+        <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/activity_registo.xml" value="0.33" />
+        <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/evento.xml" value="0.3625" />
       </map>
     </option>
   </component>

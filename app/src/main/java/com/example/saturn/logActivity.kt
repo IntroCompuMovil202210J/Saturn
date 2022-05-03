@@ -51,7 +51,7 @@ class logActivity : AppCompatActivity() {
                     updateUI(mAuth.currentUser?.email.toString())
                 }else{
                     var message = it.exception?.message.toString()
-                    var toast = Toast.makeText(this, "Este usuario no exite, por favor reviza los datos ingrezados y vuelve a intentar",Toast.LENGTH_SHORT).show()
+                    var toast = Toast.makeText(this, message,Toast.LENGTH_SHORT).show()
                 }
             })
         }else{
@@ -78,7 +78,7 @@ class logActivity : AppCompatActivity() {
     }
 
     private fun updateUI(email:String) {
-        if(email.isEmpty()){
+        if(email!=null){
             val intent = Intent(this, homeActivity::class.java)
             intent.putExtra("user",email)
             startActivity(intent);

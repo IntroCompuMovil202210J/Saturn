@@ -4,13 +4,17 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
 
-
+    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        mAuth = FirebaseAuth.getInstance();
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -27,6 +31,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent);
         }
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if(mAuth.currentUser!=null){
+            val intent = Intent(this, homeActivity::class.java)
+            intent.putExtra("user", mAuth.currentUser!!.email.toString())
+            startActivity(intent);
+        }
     }
 
 }
