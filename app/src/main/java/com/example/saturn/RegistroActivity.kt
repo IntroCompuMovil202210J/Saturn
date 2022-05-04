@@ -13,10 +13,22 @@ import android.provider.ContactsContract
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.android.gms.auth.api.signin.internal.Storage
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
 import java.io.FileNotFoundException
+import java.util.*
 
 class RegistroActivity : AppCompatActivity() {
-
+    private val PATH_USERS:String ="users/"
+    private val PATH_IMGES:String ="images/profile/"
     private lateinit var nombre: EditText
     private lateinit var edad: EditText
     private lateinit var email: EditText
@@ -28,6 +40,12 @@ class RegistroActivity : AppCompatActivity() {
     private lateinit var btnBuscarImg: Button
     private lateinit var image : ImageView
     private var GALERY_CODE: Int = 113
+    private lateinit var mStorageRef :StorageReference
+    private lateinit var storage:FirebaseStorage
+    private lateinit var database : FirebaseDatabase
+    private lateinit var myRef : DatabaseReference
+    private lateinit var mAuth : FirebaseAuth
+    private lateinit var imageUri: Uri
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +53,10 @@ class RegistroActivity : AppCompatActivity() {
 
         asignarXml()
         btnIniciar.setOnClickListener{
-            revizar()
+            var valido = revizar()
+            if(valido){
+                registrarUsuario()
+            }
         }
 
         btnCancelar.setOnClickListener(){
@@ -56,43 +77,93 @@ class RegistroActivity : AppCompatActivity() {
         edad=findViewById(R.id.editEdad)
         email=findViewById(R.id.email)
         nickname=findViewById(R.id.editNick)
-        contra = findViewById(R.id.contra)
+        contra = findViewById(R.id.editPassword)
         plataformas = findViewById(R.id.plataformas)
         image = findViewById(R.id.imageP)
         btnBuscarImg = findViewById(R.id.buscarIma)
+        storage = FirebaseStorage.getInstance()
+        mStorageRef = storage.reference
+        database = FirebaseDatabase.getInstance()
+        mAuth = FirebaseAuth.getInstance()
+
     }
 
-    private fun revizar(){
+    private fun revizar():Boolean{
         if(!nombre.text.isEmpty()){
             if(!edad.text.isEmpty()){
                 if(!email.text.isEmpty() && email.text.contains('@') && email.text.contains('.')){
                     if(!nickname.text.isEmpty()){
                         if(!contra.text.isEmpty() && contra.text.length>=6){
-                            registrarUsuiario()
-                        }else if(!contra.text.isEmpty()){
-                           val toast=Toast.makeText(this, "el campo de contraseña se encuentra vacio", Toast.LENGTH_SHORT).show()
+                            return true
+                        }else if(contra.text.isEmpty()){
+                           contra.error="Requerido"
                         }else{
-                            val toast=Toast.makeText(this, "La contraseña debe ser de minimo 6 caracteres", Toast.LENGTH_SHORT).show()
+                            contra.error="6 caracteres minimo"
                         }
                     }else{
-                        val toast=Toast.makeText(this, "El nickname esta vacio", Toast.LENGTH_SHORT).show()
+                        nickname.error="Requerido"
                     }
-                }else if(!email.text.isEmpty()){
-                    val toast=Toast.makeText(this, "El email esta vacio", Toast.LENGTH_SHORT).show()
+                }else if(email.text.isEmpty()){
+                    email.error="Requerido"
                 }else{
-                    val toast=Toast.makeText(this, "Por favor revizar que el email este bien escrito ", Toast.LENGTH_SHORT).show()
+                   email.error = "Formato no aceptado"
                 }
             }else{
-                val toast=Toast.makeText(this, "Por favor ingrese su edad", Toast.LENGTH_SHORT).show()
+                edad.error="Requerido"
             }
        }else{
-            val toast=Toast.makeText(this, "Por favor ingrese su nombre", Toast.LENGTH_SHORT).show()
+            nombre.error="Requerido"
+        }
+        return false
+    }
+
+    private fun registrarUsuario(){
+
+        mAuth.createUserWithEmailAndPassword( email.text.toString(),contra.text.toString()).addOnCompleteListener {
+            if(it.isSuccessful){
+                var user : FirebaseUser? = mAuth.currentUser
+                if(user!=null){
+                    var UserProfileBuilder:UserProfileChangeRequest.Builder = UserProfileChangeRequest.Builder()
+                    var mUser:Usuario = Usuario()
+
+                    UserProfileBuilder.setDisplayName(nombre.text.toString())
+                    UserProfileBuilder.setPhotoUri(imageUri)
+                    user.updateProfile(UserProfileBuilder.build())
+
+
+                    mUser.nombre=nombre.text.toString()
+                    mUser.edad=edad.text.toString()
+                    mUser.email=email.text.toString()
+                    mUser.nickname=nickname.text.toString()
+                    mUser.contra=contra.text.toString()
+                    mUser.plataformas = plataformas.selectedItem.toString()
+
+                    var imageUID:String = UUID.randomUUID().toString()
+
+
+                    var ref:StorageReference = mStorageRef.child(PATH_IMGES+imageUID)
+                    var imagePath :String =imageUri.path.toString()
+                    ref.putFile(imageUri)
+                    mUser.imageUri=imageUID
+
+
+                    var keyAuth: String? = user.uid
+                    myRef=database.getReference(PATH_USERS+keyAuth)
+                    myRef.setValue(mUser)
+                    updateUI(user.email.toString())
+                }
+            }else{
+                var toast = Toast.makeText(this,"gdfgnudfshgdfsuihvboisd",Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
-    private fun registrarUsuiario(){
-        var intent = Intent(this, homeActivity::class.java)
-        startActivity(intent);
+    private fun updateUI(email:String) {
+        if(email!=null){
+            val intent = Intent(this, homeActivity::class.java)
+            intent.putExtra("user",email)
+            startActivity(intent);
+        }
     }
 
     private fun selectIamge(){
@@ -112,7 +183,7 @@ class RegistroActivity : AppCompatActivity() {
             GALERY_CODE->
                 if(resultCode== RESULT_OK){
                     try{
-                        val imageUri: Uri = data?.data as Uri
+                        imageUri = data?.data as Uri
                         var imageStream = contentResolver.openInputStream(imageUri)
                         var selectedImage = BitmapFactory.decodeStream(imageStream)
                         image.setImageBitmap(selectedImage)
