@@ -5,21 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:background="@drawable/colorstroke"
+        android:layout_height="200dp"
+        android:background="@color/darkblue"
         android:orientation="horizontal"
-        android:padding="15dp">
+        android:padding="15dp"
+        android:layout_marginBottom="15dp"
+        tools:ignore="MissingConstraints">
 
         <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginEnd="15dp"
+            android:id="@+id/imagenEvento"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
             android:src="@drawable/download"
-            android:scaleType="fitCenter"
+            android:scaleType="fitXY"
+            android:layout_marginRight="15dp"
             android:adjustViewBounds="true"
             />
 
@@ -30,25 +32,61 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/nombreEvento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Mario Kart"
+                android:text="Nombre"
+                android:textAlignment="center"
                 android:fontFamily="@font/rubik_variable_wght"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/descripcionEvento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Un juego amistoso de mario kart, no por el premio, pero por la gloria."
+                android:text="Descripcion"
                 android:fontFamily="@font/rubik_variable_wght"
                 android:layout_marginTop="15dp"
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/plataformasEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Plataformas"
+                android:fontFamily="@font/rubik_variable_wght"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/fechaEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/rubik_variable_wght"
+                android:text="Fecha"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/participantesEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Proximidad"
+                android:fontFamily="@font/rubik_variable_wght"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

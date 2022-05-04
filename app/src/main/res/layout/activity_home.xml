@@ -38,71 +38,27 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Eventos cerca de ti"
+            android:text="Eventos"
+            android:layout_marginBottom="15dp"
             android:fontFamily="@font/rubik_variable_wght"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"/>
 
-        <ScrollView
+
+        <ListView
+            android:id="@+id/lista"
             android:layout_width="match_parent"
-            android:layout_height="617dp"
-            android:layout_weight="2">
-
-            <ListView
-                android:id="@+id/lista"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </ScrollView>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:orientation="horizontal"
-            android:background="@color/darkblue">
-
-
-            <ImageButton
-                android:id="@+id/arcade"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/controlrecto"
-                android:background="@drawable/colorstroke"
-                />
-
-            <ImageButton
-                android:id="@+id/mapa"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@null"
-                android:src="@drawable/mapa" />
-
-            <ImageButton
-                android:id="@+id/chats"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@null"
-                android:src="@drawable/group" />
-
-            <ImageButton
-                android:id="@+id/persona"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@null"
-                android:src="@drawable/hito" />
-        </LinearLayout>
+            android:layout_height="match_parent"
+            android:dividerHeight="15dp"
+            android:layout_marginBottom="75dp"/>
 
 
     </LinearLayout>
 
     <ImageButton
-        android:id="@+id/fab"
+        android:id="@+id/agregar"
         android:background="@drawable/bolita_colorida"
         android:padding="15dp"
         android:layout_width="wrap_content"
@@ -111,4 +67,45 @@
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="80dp"
         android:src="@drawable/pencil" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/darkblue"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom">
+
+
+        <ImageButton
+            android:id="@+id/arcade"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/colorstroke"
+            android:src="@drawable/controlrecto" />
+
+        <ImageButton
+            android:id="@+id/mapa"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:src="@drawable/mapa" />
+
+        <ImageButton
+            android:id="@+id/chats"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:src="@drawable/group" />
+
+        <ImageButton
+            android:id="@+id/persona"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:src="@drawable/hito" />
+    </LinearLayout>
 </FrameLayout>

@@ -16,6 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Saturn">
         <activity
+            android:name=".CrearEventoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EventoActivity"
+            android:exported="false" />
+        <activity
             android:name=".conversacionActivity"
             android:exported="false" />
         <activity

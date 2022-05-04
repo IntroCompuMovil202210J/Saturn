@@ -146,10 +146,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_weight="10"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:background="@color/darkblue">
+            android:layout_height="60dp"
+            android:background="@color/darkblue"
+            android:orientation="horizontal">
 
 
             <ImageButton
@@ -157,9 +156,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/controlrecto"
                 android:background="@null"
-                />
+                android:src="@drawable/controlrecto" />
 
             <ImageButton
                 android:id="@+id/mapa"
@@ -187,4 +185,5 @@
         </LinearLayout>
 
     </LinearLayout>
+
 </FrameLayout>

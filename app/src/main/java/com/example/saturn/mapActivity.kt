@@ -252,11 +252,12 @@ class mapActivity : AppCompatActivity() {
 
     @SuppressLint("MissingPermission")
     private fun getLocation(){
-        localRequest = LocationRequest()
-        localRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-        localRequest.smallestDisplacement= 30F
-        localRequest.interval=0
-        localRequest.fastestInterval=0
+        localRequest = LocationRequest.create().apply {
+            this.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+            this.interval=100
+            this.fastestInterval=3000
+            this.setMaxWaitTime(100)
+        }
         fusedLocationClient.requestLocationUpdates(localRequest,locationCallback, Looper.myLooper()!! )
 
     }
