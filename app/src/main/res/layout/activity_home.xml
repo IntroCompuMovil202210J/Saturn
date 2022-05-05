@@ -2,110 +2,119 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".homeActivity"
     android:background="@drawable/listgrad">
 
 
-    <ImageView
-        android:id="@+id/imageView3"
+    <FrameLayout
+        android:id="@+id/frame2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/control_rotado"
-        android:scaleType="centerInside"
-        android:adjustViewBounds="true"
-        android:layout_gravity="center"/>
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/linear1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/marca"
+        <ImageButton
+            android:id="@+id/agregar"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:layout_marginBottom="80dp"
+            android:background="@drawable/bolita_colorida"
+            android:padding="15dp"
+            android:src="@drawable/pencil" />
+
+        <LinearLayout
+            android:id="@+id/linear1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:background="@color/darkblue"
+            android:orientation="horizontal">
+
+
+            <ImageButton
+                android:id="@+id/arcade"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/colorstroke"
+                android:src="@drawable/controlrecto" />
+
+            <ImageButton
+                android:id="@+id/mapa"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/mapa" />
+
+            <ImageButton
+                android:id="@+id/chats"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/group" />
+
+            <ImageButton
+                android:id="@+id/persona"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/hito" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/ruslandisplay_regular"
-            android:text="@string/app_name"
-            android:textColor="@color/yellow"
-            android:textSize="48sp" />
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/control_rotado" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Eventos"
-            android:layout_marginBottom="15dp"
-            android:fontFamily="@font/rubik_variable_wght"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
-
-
-        <ListView
-            android:id="@+id/lista"
+        <LinearLayout
+            android:id="@+id/linear2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:dividerHeight="15dp"
-            android:layout_marginBottom="75dp"/>
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/marca"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/ruslandisplay_regular"
+                android:text="@string/app_name"
+                android:textColor="@color/yellow"
+                android:textSize="48sp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/rubik_variable_wght"
+                android:gravity="center"
+                android:text="Eventos"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
 
-    </LinearLayout>
-
-    <ImageButton
-        android:id="@+id/agregar"
-        android:background="@drawable/bolita_colorida"
-        android:padding="15dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="80dp"
-        android:src="@drawable/pencil" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/darkblue"
-        android:orientation="horizontal"
-        android:layout_gravity="bottom">
+            <ListView
+                android:id="@+id/lista"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="75dp"
+                android:dividerHeight="15dp" />
 
 
-        <ImageButton
-            android:id="@+id/arcade"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/colorstroke"
-            android:src="@drawable/controlrecto" />
+        </LinearLayout>
+    </FrameLayout>
 
-        <ImageButton
-            android:id="@+id/mapa"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@null"
-            android:src="@drawable/mapa" />
-
-        <ImageButton
-            android:id="@+id/chats"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@null"
-            android:src="@drawable/group" />
-
-        <ImageButton
-            android:id="@+id/persona"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@null"
-            android:src="@drawable/hito" />
-    </LinearLayout>
 </FrameLayout>

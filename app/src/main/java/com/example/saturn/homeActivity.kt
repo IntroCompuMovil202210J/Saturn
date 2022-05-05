@@ -1,20 +1,63 @@
 package com.example.saturn
 
+
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.os.Bundle
+import android.os.StrictMode
+import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageButton
-import android.widget.ListView
+import android.R.drawable
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_home.*
 import java.time.LocalDate
-import java.time.LocalDateTime
-import java.util.*
 
 
 class homeActivity : AppCompatActivity() {
+
+    private lateinit var context :Context
+    lateinit var sensorManager: SensorManager;
+    private  var proximitySensor : Sensor? =null
+
+
+    private var proximitySensorListener = object : SensorEventListener {
+        override fun onSensorChanged(event: SensorEvent?) {
+            var layout = findViewById<FrameLayout>(R.id.frame1)
+            var layout2 = findViewById<FrameLayout>(R.id.frame2)
+            if (event != null) {
+                if (event.values[0] < 4) {
+                    println("Proximidad de:" + event.values[0])
+                    layout.setBackgroundColor(Color.BLACK)
+                    layout2.setVisibility(View.INVISIBLE)
+
+
+                } else if (event.values[0] >= 4) {
+                    println("Proximidad de:" + event.values[0])
+                    layout.setBackgroundResource(R.drawable.listgrad)
+                    layout2.setVisibility(View.VISIBLE)
+                }
+
+            }
+        }
+        override fun onAccuracyChanged(p0: Sensor?, p1: Int) {}
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+        proximitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY)
+
+        val policy : StrictMode.ThreadPolicy = StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
         val btnmap = findViewById<ImageButton>(R.id.mapa)
         val btnchats = findViewById<ImageButton>(R.id.chats)
@@ -58,5 +101,17 @@ class homeActivity : AppCompatActivity() {
             intent.putExtra("evento",listaEventos[position])
             startActivity(intent)
         }
+
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        sensorManager.registerListener(proximitySensorListener,proximitySensor,SensorManager.SENSOR_DELAY_FASTEST)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        sensorManager.unregisterListener(proximitySensorListener)
     }
 }

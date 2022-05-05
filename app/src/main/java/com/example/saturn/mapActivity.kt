@@ -243,7 +243,7 @@ class mapActivity : AppCompatActivity() {
                     getLocation()
                 }
             }else{
-                val toast = Toast.makeText(this,"enable this shit",Toast.LENGTH_SHORT).show()
+                val toast = Toast.makeText(this,"Porfavor active la localizacion",Toast.LENGTH_SHORT).show()
             }
         }else{
             AskPermission()
