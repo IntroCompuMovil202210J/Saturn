@@ -74,7 +74,7 @@
             android:background="@drawable/normalradius"
             android:ems="10"
             android:hint="Ingrese la contraseña"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:paddingHorizontal="15dp" />
 
         <Button
