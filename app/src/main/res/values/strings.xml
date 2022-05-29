@@ -28,4 +28,7 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="crear_un_evento">Crear un evento</string>
+    <string name="Nombre_del_juego">Nombre del juego:</string>
+    <string name="Crear_sesion">01 JAN 2022</string>
 </resources>

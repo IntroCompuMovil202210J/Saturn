@@ -13,7 +13,7 @@
         android:layout_height="531dp"
         android:layout_gravity="bottom"
         android:rotation="-45"
-        app:srcCompat="@drawable/vector" />
+        app:srcCompat="@drawable/control_rotado" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -41,25 +41,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/marca"
-                android:layout_alignParentEnd="true"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="17dp"
-                android:layout_marginEnd="125dp"
                 android:fontFamily="@font/rubik_variable_wght"
                 android:gravity="center"
-                android:text="@string/registro"
+                android:text="@string/crear_un_evento"
                 android:textColor="@color/white"
                 android:textSize="40sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/laNombre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="113dp"
+                android:layout_height="48dp"
                 android:layout_below="@id/registro"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/rubik_variable_wght"
-                android:text="@string/nombre"
+                android:text="@string/Nombre_del_juego"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -83,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/laDescripcion"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="83dp"
                 android:fontFamily="@font/rubik_variable_wght"
                 android:text="@string/participantes"
                 android:textColor="@color/white"
@@ -96,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/laParticipantes"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="44dp"
                 android:fontFamily="@font/rubik_variable_wght"
                 android:text="@string/fecha"
                 android:textColor="@color/white"
@@ -107,7 +106,7 @@
                 android:id="@+id/laPlataformas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/laFecha"
+                android:layout_below="@id/datePicker"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/rubik_variable_wght"
@@ -121,8 +120,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/registro"
-                android:layout_marginStart="55dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="39dp"
                 android:layout_toEndOf="@id/laNombre"
                 android:background="@drawable/normalradius"
                 android:ems="10"
@@ -131,37 +130,38 @@
             <EditText
                 android:id="@+id/editDescripcion"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="83dp"
                 android:layout_below="@id/editNombre"
-                android:layout_marginStart="22dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="40dp"
                 android:layout_toEndOf="@id/laDescripcion"
                 android:background="@drawable/normalradius"
                 android:ems="10" />
 
             <EditText
                 android:id="@+id/editParticipantes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="81dp"
+                android:layout_height="45dp"
                 android:layout_below="@id/editDescripcion"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="28dp"
                 android:layout_toEndOf="@id/laParticipantes"
                 android:background="@drawable/normalradius"
                 android:ems="10"
                 android:inputType="number" />
 
-            <EditText
-                android:id="@+id/editNick"
+
+            <DatePicker
+                android:id="@+id/datePicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editParticipantes"
-                android:layout_marginStart="75dp"
-                android:layout_marginTop="30dp"
-                android:layout_toEndOf="@id/laFecha"
-                android:background="@drawable/normalradius"
-                android:ems="10"
-                android:inputType="textPersonName" />
+                android:layout_below="@+id/laFecha"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/whitebackground"
+                android:calendarTextColor="@color/white"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner" />
 
             <Spinner
                 android:id="@+id/plataformas"
@@ -178,7 +178,6 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/buscarIma"
-                android:layout_alignParentEnd="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="43dp"
                 android:layout_marginEnd="98dp"
