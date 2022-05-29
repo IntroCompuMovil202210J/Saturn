@@ -11,4 +11,6 @@ data class Usuario (
     var nickname: String?=null,
     var contra: String?=null,
     var plataformas : String?=null,
-    var imageUri: String?=null){}
+    var imageUri: String?=null,
+    var lon : Double?=null,
+    var lat:Double?=null){}

@@ -20,12 +20,18 @@ import android.os.Bundle
 import android.os.Looper
 import android.os.StrictMode
 import android.preference.PreferenceManager
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.*
 import org.osmdroid.bonuspack.routing.OSRMRoadManager
 import org.osmdroid.bonuspack.routing.Road
 import org.osmdroid.bonuspack.routing.RoadManager
@@ -42,6 +48,8 @@ import kotlin.collections.ArrayList
 
 class mapActivity : AppCompatActivity() {
 
+    private val PATH_USERS:String ="users/"
+
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var localRequest : LocationRequest
     val LOCATION_MAP_PERMMISION : Int = 114
@@ -53,6 +61,12 @@ class mapActivity : AppCompatActivity() {
     private var destiny : Marker? = null
     private var newMarker : Marker? = null
     private var roadOverlay : Polyline? = null
+    private lateinit var mAuth : FirebaseAuth
+    private lateinit var database : FirebaseDatabase
+    private lateinit var myRef : DatabaseReference
+    private lateinit var user : FirebaseUser
+    private lateinit var fab : View
+    private var initial :Boolean = true
 
     private var lightSensorListener = object : SensorEventListener{
         override fun onSensorChanged(event: SensorEvent?) {
@@ -71,15 +85,33 @@ class mapActivity : AppCompatActivity() {
     private val locationCallback = object : LocationCallback(){
         override fun onLocationResult(p0: LocationResult) {
             super.onLocationResult(p0)
+            var lastLocation: Location = p0.lastLocation
+            var place =GeoPoint(lastLocation.latitude, lastLocation.longitude, lastLocation.altitude)
+            var keyAuth: String? = user.uid
 
-            var lastLocation : Location = p0.lastLocation
-            var place = GeoPoint(lastLocation.latitude,lastLocation.longitude,lastLocation.altitude)
-
-            if(newMarker!=null){
+            if (newMarker != null) {
                 mapa.overlays.remove(newMarker)
             }
             newMarker = setMarker(place);
             mapa.overlays.add(newMarker)
+
+            myRef=database.getReference(PATH_USERS+keyAuth)
+
+            myRef.addListenerForSingleValueEvent( object: ValueEventListener {
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    var mUser= snapshot.getValue(Usuario::class.java)
+                    if(mUser != null) {
+                        mUser.lat = newMarker?.position?.latitude
+                        mUser.lon = newMarker?.position?.longitude
+                        myRef.setValue(mUser)
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
 
         }
     }
@@ -93,6 +125,10 @@ class mapActivity : AppCompatActivity() {
         val btnchats = findViewById<ImageButton>(R.id.chats)
         val btnperfil = findViewById<ImageButton>(R.id.persona)
 
+        fab = findViewById(R.id.fab)
+        database = FirebaseDatabase.getInstance()
+        mAuth = FirebaseAuth.getInstance()
+        user = mAuth.currentUser!!
         fusedLocationClient =LocationServices.getFusedLocationProviderClient(this)
         roadManager = OSRMRoadManager(this,"ANDROID")
         mGeocoder = Geocoder(baseContext)
@@ -106,6 +142,12 @@ class mapActivity : AppCompatActivity() {
         mapa.overlays.add(createOverlayEvents())
 
         btnperfil.setOnClickListener{
+            mapa.onCancelPendingInputEvents()
+            mapa.onPause()
+            if (fusedLocationClient!= null) {
+                fusedLocationClient.removeLocationUpdates(locationCallback)
+            }
+            sensorManager.unregisterListener(lightSensorListener)
             val intent = Intent(this, perfilActivity::class.java)
             startActivity(intent);
         }
@@ -116,8 +158,16 @@ class mapActivity : AppCompatActivity() {
         }
 
         btnhome.setOnClickListener{
+
             val intent = Intent(this, homeActivity::class.java)
             startActivity(intent);
+        }
+
+        fab.setOnClickListener{
+
+            val mapViewController = mapa.controller
+            mapViewController.setZoom(19.0)
+            mapViewController.setCenter(newMarker?.position )
         }
     }
 
@@ -256,7 +306,7 @@ class mapActivity : AppCompatActivity() {
             this.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
             this.interval=100
             this.fastestInterval=3000
-            this.setMaxWaitTime(100)
+            this.setMaxWaitTime(1000)
         }
         fusedLocationClient.requestLocationUpdates(localRequest,locationCallback, Looper.myLooper()!! )
 
@@ -269,9 +319,11 @@ class mapActivity : AppCompatActivity() {
         marker.title = address[0].getAddressLine(0)+", "+address[0].subLocality
         marker.position=place
         marker.setAnchor(Marker.ANCHOR_CENTER,Marker.ANCHOR_BOTTOM)
-
-        mapViewController.setZoom(19.0)
-        mapViewController.setCenter(place)
+        if(initial){
+            mapViewController.setZoom(19.0)
+            mapViewController.setCenter(place)
+            initial=false;
+        }
 
         return marker
     }

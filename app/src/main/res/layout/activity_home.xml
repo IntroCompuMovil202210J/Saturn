@@ -14,16 +14,56 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageButton
-            android:id="@+id/agregar"
-            android:layout_width="wrap_content"
+
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginEnd="@dimen/fab_margin"
-            android:layout_marginBottom="80dp"
-            android:background="@drawable/bolita_colorida"
-            android:padding="15dp"
-            android:src="@drawable/pencil" />
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/control_rotado" />
+
+        <LinearLayout
+            android:id="@+id/linear2"
+            android:layout_width="match_parent"
+            android:layout_height="683dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/marca"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/ruslandisplay_regular"
+                android:text="@string/app_name"
+                android:textColor="@color/yellow"
+                android:textSize="48sp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/rubik_variable_wght"
+                android:gravity="center"
+                android:text="Eventos"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <ListView
+                android:id="@+id/lista"
+                android:layout_width="match_parent"
+                android:layout_height="568dp"
+                android:layout_marginBottom="80dp"
+                android:dividerHeight="15dp" />
+
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linear1"
@@ -67,54 +107,17 @@
                 android:src="@drawable/hito" />
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="match_parent"
+
+        <ImageButton
+            android:id="@+id/agregar"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:scaleType="centerInside"
-            android:src="@drawable/control_rotado" />
-
-        <LinearLayout
-            android:id="@+id/linear2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/marca"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/ruslandisplay_regular"
-                android:text="@string/app_name"
-                android:textColor="@color/yellow"
-                android:textSize="48sp" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:fontFamily="@font/rubik_variable_wght"
-                android:gravity="center"
-                android:text="Eventos"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-
-            <ListView
-                android:id="@+id/lista"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="75dp"
-                android:dividerHeight="15dp" />
-
-
-        </LinearLayout>
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:layout_marginBottom="80dp"
+            android:background="@drawable/bolita_colorida"
+            android:padding="15dp"
+            android:src="@drawable/pencil" />
     </FrameLayout>
 
 </FrameLayout>

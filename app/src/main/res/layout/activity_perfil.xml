@@ -106,7 +106,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/swich"
+                    android:id="@+id/plataform"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/laPlataformas"
@@ -117,17 +117,6 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/steam"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/swich"
-                    android:layout_centerHorizontal="true"
-                    android:fontFamily="@font/rubik_variable_wght"
-                    android:text="- Steam"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
             </RelativeLayout>
 
         </ScrollView>
