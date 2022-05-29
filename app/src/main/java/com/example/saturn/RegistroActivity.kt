@@ -39,7 +39,7 @@ class RegistroActivity : AppCompatActivity() {
     private lateinit var btnCancelar: Button
     private lateinit var btnBuscarImg: Button
     private lateinit var image : ImageView
-    private var GALERY_CODE: Int = 113
+    private val GALERY_CODE: Int = 113
     private lateinit var mStorageRef :StorageReference
     private lateinit var storage:FirebaseStorage
     private lateinit var database : FirebaseDatabase

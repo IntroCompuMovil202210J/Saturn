@@ -6,9 +6,15 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
+import com.bumptech.glide.Glide
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_evento.*
 
 class EventoActivity : AppCompatActivity() {
+
+    private lateinit var storageReference : StorageReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_evento)
@@ -18,7 +24,9 @@ class EventoActivity : AppCompatActivity() {
         val btnperfil = findViewById<ImageButton>(R.id.persona)
         val btnhome = findViewById<ImageButton>(R.id.arcade)
         var btnregistro = findViewById<Button>(R.id.registrarseEvento)
+        storageReference = FirebaseStorage.getInstance().reference
         var cont = 0;
+
 
         btnhome.setOnClickListener{
             var intent = Intent(this, homeActivity::class.java)
@@ -50,13 +58,9 @@ class EventoActivity : AppCompatActivity() {
 
         }
 
-        val evento = intent.getSerializableExtra("evento") as Evento
+        val evento = intent.extras as Evento
 
-        nombre.text = evento.nombre
-        descripcion.text = evento.descripcion
-        plataforma.text = evento.plataforma
-        fecha.text = evento.fecha.toString()
-        participantes.text = evento.participantes.toString()
-        imagen.setImageResource(evento.imagen)
+
+
     }
 }
