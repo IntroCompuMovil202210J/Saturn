@@ -119,9 +119,10 @@ class CrearEventoActivity : AppCompatActivity() {
                 year = datePicker.year.toString()
                 date=day+"/"+month+"/"+year
                 registrarEvento()
+                val intent = Intent(this,homeActivity::class.java)
+                startActivity(intent)
             }
         }
-
     }
 
     private fun selectIamge(){

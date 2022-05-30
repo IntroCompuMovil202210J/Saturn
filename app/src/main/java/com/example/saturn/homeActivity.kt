@@ -79,6 +79,8 @@ class homeActivity : AppCompatActivity() {
         val btnperfil = findViewById<ImageButton>(R.id.persona)
         val btnagregar = findViewById<ImageButton>(R.id.agregar)
 
+        connect()
+
         btnperfil.setOnClickListener{
             var intent = Intent(this, perfilActivity::class.java)
             startActivity(intent);
