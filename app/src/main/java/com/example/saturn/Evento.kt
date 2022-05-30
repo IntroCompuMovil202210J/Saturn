@@ -16,4 +16,5 @@ data class Evento(
     var participantes:Int?=null,
     var imageUri: String?=null,
     var lat:Double?=null,
-    var lon:Double?=null):Serializable
+    var lon:Double?=null,
+    var participantesUID : String? = null):Serializable

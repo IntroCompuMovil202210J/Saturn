@@ -22,12 +22,14 @@ import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_evento.*
 import java.io.FileNotFoundException
 import java.util.*
+import kotlin.collections.ArrayList
 
 class CrearEventoActivity : AppCompatActivity() {
 
     private val PATH_EVENT:String ="events/"
     private var GALERY_CODE: Int = 113
     private val PATH_EVENT_IMGES:String ="images/events/"
+    private val PATH_EVENT_PARTICIPANTS:String="participants/"
     private lateinit var mStorageRef : StorageReference
     private lateinit var storage: FirebaseStorage
     private lateinit var database : FirebaseDatabase
@@ -180,6 +182,7 @@ class CrearEventoActivity : AppCompatActivity() {
 
 
     private fun registrarEvento(){
+            var participantes : ArrayList<String> = ArrayList<String> ()
 
 
             var user : FirebaseUser? = mAuth.currentUser
@@ -197,9 +200,14 @@ class CrearEventoActivity : AppCompatActivity() {
             ref.putFile(imageUri)
             mEvento.imageUri=imageUID
 
-            var keyAuth: String? = user?.uid
+            myRef=database.getReference(PATH_EVENT)
+            var keyAuth: String? = myRef.push().key
+            mEvento.participantesUID=keyAuth
             myRef=database.getReference(PATH_EVENT+keyAuth)
             myRef.setValue(mEvento)
+            myRef=database.getReference(PATH_EVENT_PARTICIPANTS+keyAuth)
+            participantes.add(user?.uid.toString())
+            myRef.setValue(participantes)
 
     }
 
