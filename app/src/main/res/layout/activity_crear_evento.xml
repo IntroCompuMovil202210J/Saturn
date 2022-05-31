@@ -183,7 +183,7 @@
                 android:layout_marginEnd="98dp"
                 android:background="@drawable/colorstroke"
                 android:fontFamily="@font/rubik_variable_wght"
-                android:text="@string/registrar"
+                android:text="Siguiente"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -227,7 +227,7 @@
                 android:layout_marginTop="30dp"
                 android:background="@drawable/colorstroke"
                 android:scaleType="fitCenter"
-                android:src="@drawable/hito" />
+                android:src="@drawable/controlrecto" />
 
             <Button
                 android:id="@+id/buscarIma"
@@ -243,6 +243,7 @@
                 android:background="@null"
                 android:text="@string/seleccionar_imagen"
                 android:textColor="@color/white" />
+
 
         </RelativeLayout>
     </ScrollView>

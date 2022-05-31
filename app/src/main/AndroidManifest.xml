@@ -3,7 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.saturn">
 
-    <uses-feature android:name="android.hardware.sensor.proximity" android:required="true"/>
+    <uses-feature
+        android:name="android.hardware.sensor.proximity"
+        android:required="true" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -17,6 +20,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Saturn">
+        <activity
+            android:name=".participantesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".seleccionarLugarActivity"
+            android:exported="false" />
         <activity
             android:name=".CrearEventoActivity"
             android:exported="false" />

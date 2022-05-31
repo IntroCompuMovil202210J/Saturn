@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".seleccionarLugarActivity">
+
+    <org.osmdroid.views.MapView
+        android:id="@+id/osmMap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </org.osmdroid.views.MapView>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Donde sera el evento?"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/roundcorner"
+        android:alpha="0.5"
+        android:layout_marginTop="5dp"
+        android:imeOptions="actionSend"
+        />
+
+
+
+    <Button
+        android:id="@+id/agregar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/colorstroke"
+        android:padding="15dp"
+        android:text="Registrar"
+        android:textColor="@color/white"
+        />
+</FrameLayout>

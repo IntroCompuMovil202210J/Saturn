@@ -2,16 +2,30 @@ package com.example.saturn
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.app.UiModeManager
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
+import android.location.Address
+import android.location.Geocoder
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.StrictMode
+import android.preference.PreferenceManager
+import android.view.inputmethod.EditorInfo
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
@@ -20,7 +34,18 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_evento.*
+import org.osmdroid.bonuspack.routing.OSRMRoadManager
+import org.osmdroid.bonuspack.routing.RoadManager
+import org.osmdroid.events.MapEventsReceiver
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory
+import org.osmdroid.util.GeoPoint
+import org.osmdroid.views.MapView
+import org.osmdroid.views.overlay.MapEventsOverlay
+import org.osmdroid.views.overlay.Marker
+import org.osmdroid.views.overlay.Polyline
+import org.osmdroid.views.overlay.TilesOverlay
 import java.io.FileNotFoundException
+import java.io.IOException
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -55,6 +80,7 @@ class CrearEventoActivity : AppCompatActivity() {
     private val today = Calendar.getInstance()
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crear_evento)
@@ -79,6 +105,7 @@ class CrearEventoActivity : AppCompatActivity() {
         storage = FirebaseStorage.getInstance()
         mStorageRef = storage.reference
         database = FirebaseDatabase.getInstance()
+
 
 
         datePickerInitializr()
@@ -121,11 +148,11 @@ class CrearEventoActivity : AppCompatActivity() {
                 year = datePicker.year.toString()
                 date=day+"/"+month+"/"+year
                 registrarEvento()
-                val intent = Intent(this,homeActivity::class.java)
-                startActivity(intent)
+
             }
         }
     }
+
 
     private fun selectIamge(){
         var pickImage = Intent(Intent.ACTION_PICK)
@@ -182,8 +209,6 @@ class CrearEventoActivity : AppCompatActivity() {
 
 
     private fun registrarEvento(){
-            var participantes : ArrayList<String> = ArrayList<String> ()
-
 
             var user : FirebaseUser? = mAuth.currentUser
             var mEvento:Evento = Evento()
@@ -200,15 +225,9 @@ class CrearEventoActivity : AppCompatActivity() {
             ref.putFile(imageUri)
             mEvento.imageUri=imageUID
 
-            myRef=database.getReference(PATH_EVENT)
-            var keyAuth: String? = myRef.push().key
-            mEvento.participantesUID=keyAuth
-            myRef=database.getReference(PATH_EVENT+keyAuth)
-            myRef.setValue(mEvento)
-            myRef=database.getReference(PATH_EVENT_PARTICIPANTS+keyAuth)
-            participantes.add(user?.uid.toString())
-            myRef.setValue(participantes)
-
+            val intent = Intent(this,seleccionarLugarActivity::class.java)
+            intent.putExtra("evento",mEvento)
+            startActivity(intent)
     }
 
 

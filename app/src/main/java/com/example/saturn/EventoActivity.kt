@@ -17,13 +17,6 @@ import kotlinx.android.synthetic.main.activity_evento.view.*
 class EventoActivity : AppCompatActivity() {
 
     private lateinit var storageReference : StorageReference
-
-    private val PATH_USERS:String ="users/"
-    private val PATH_EVENT_PARTICIPANTS:String="participants/"
-    private lateinit var database: FirebaseDatabase
-    private lateinit var myRef: DatabaseReference
-    private lateinit var vel : ValueEventListener
-    private lateinit var contactList : ArrayList<Usuario>
     private lateinit var evento : Evento
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +27,7 @@ class EventoActivity : AppCompatActivity() {
         val btnperfil = findViewById<ImageButton>(R.id.persona)
         val btnhome = findViewById<ImageButton>(R.id.arcade)
         val btnregistro = findViewById<Button>(R.id.registrarseEvento)
+        val btnParticipants = findViewById<Button>(R.id.participantes)
 
         val imgEvent = findViewById<ImageView>(R.id.imagen)
         val nameEvent = findViewById<TextView>(R.id.nombre)
@@ -44,7 +38,11 @@ class EventoActivity : AppCompatActivity() {
         storageReference = FirebaseStorage.getInstance().reference
         var cont = 0;
 
-
+        btnParticipants.setOnClickListener{
+            var intent = Intent(this, participantesActivity::class.java)
+            intent.putExtra("participantes",evento.participantes.toString())
+            startActivity(intent);
+        }
         btnhome.setOnClickListener{
             var intent = Intent(this, homeActivity::class.java)
             startActivity(intent);
@@ -89,52 +87,8 @@ class EventoActivity : AppCompatActivity() {
         dscrptnEvent.text=evento.descripcion
         pltfrmEvent.text=evento.plataforma
         dateEvent.text=evento.fecha
-        connect()
-
-
-
     }
 
 
-    @SuppressLint("Range")
-    fun connect(){
-        contactList = ArrayList()
-        database = FirebaseDatabase.getInstance()
-        var UIDS : String?=null
 
-        myRef = database.getReference(PATH_EVENT_PARTICIPANTS+evento.participantesUID)
-        vel = myRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                contactList.clear()
-                for(single : DataSnapshot in snapshot.children ){
-                    UIDS = single.getValue() as String
-
-                    var mySubRef : DatabaseReference = database.getReference(PATH_USERS+UIDS)
-
-                    var vel1 = mySubRef.addValueEventListener(object : ValueEventListener {
-                        override fun onDataChange(snapshot: DataSnapshot) {
-
-                            var usuario : Usuario? = snapshot.getValue(Usuario::class.java)
-                             if (usuario != null ) {
-                                 contactList.add(usuario)
-                             }
-
-                        }
-                        override fun onCancelled(error: DatabaseError) {
-                            TODO("Not yet implemented")
-                        }
-                    })
-
-                }
-                val adapter = UsuariosAdapter(this@EventoActivity,contactList)
-                lista.adapter=adapter
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
-
-
-    }
 }

@@ -27,7 +27,7 @@
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp" />
 
         <TextView
             android:id="@+id/nombre"
@@ -67,6 +67,7 @@
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/laPlataforma"
                     android:layout_width="wrap_content"
@@ -78,6 +79,7 @@
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/plataforma"
                     android:layout_width="wrap_content"
@@ -101,6 +103,7 @@
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/fecha"
                     android:layout_width="wrap_content"
@@ -113,32 +116,42 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/participantes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:fontFamily="@font/rubik_variable_wght"
-                    android:text="Participantes:"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
 
                 <LinearLayout
+                    android:layout_marginTop="50dp"
                     android:layout_width="match_parent"
-                    android:layout_height="194dp"
-                    android:orientation="vertical"
-                    xmlns:tools="http://schemas.android.com/tools"
-                    >
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="20dp">
 
-                    <ListView
-                        android:id="@+id/lista"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:dividerHeight="5dp" />
+
+                    <Button
+                        android:id="@+id/participantes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/colorstroke"
+                        android:fontFamily="@font/rubik_variable_wght"
+                        android:paddingHorizontal="15dp"
+                        android:text="Participantes"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/ubi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="30dp"
+                        android:background="@drawable/colorstroke"
+                        android:fontFamily="@font/rubik_variable_wght"
+                        android:paddingHorizontal="15dp"
+                        android:text="Ubicación"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
                 </LinearLayout>
 
 
