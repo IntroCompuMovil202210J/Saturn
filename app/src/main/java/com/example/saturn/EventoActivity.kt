@@ -40,7 +40,7 @@ class EventoActivity : AppCompatActivity() {
 
         btnParticipants.setOnClickListener{
             var intent = Intent(this, participantesActivity::class.java)
-            intent.putExtra("participantes",evento.participantes.toString())
+            intent.putExtra("participantes",evento.participantesUID.toString())
             startActivity(intent);
         }
         btnhome.setOnClickListener{

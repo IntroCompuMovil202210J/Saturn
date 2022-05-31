@@ -30,41 +30,42 @@ class participantesActivity : AppCompatActivity() {
     fun connect(){
         contactList = ArrayList()
         database = FirebaseDatabase.getInstance()
-        var UIDS : ArrayList<String>?=null
+        var UID : String
+        var UIDS : ArrayList<String> = ArrayList<String>()
 
         myRef = database.getReference(PATH_EVENT_PARTICIPANTS+participantesUID)
         vel = myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 contactList.clear()
-                for(single : DataSnapshot in snapshot.children ){
-                    UIDS = single.getValue() as ArrayList<String>
+                if(snapshot.exists()){
+                    for(single : DataSnapshot in snapshot.children ){
+                        UID = single.getValue()as String
+                        UIDS.add(UID)
 
-                    var mySubRef : DatabaseReference = database.getReference(PATH_USERS+UIDS)
+                        var mySubRef : DatabaseReference = database.getReference(PATH_USERS+UID)
+                        var vel1 = mySubRef.addValueEventListener(object : ValueEventListener {
+                            override fun onDataChange(snapshot: DataSnapshot) {
+                                var usuario : Usuario? = snapshot.getValue(Usuario::class.java)
+                                if (usuario != null ) {
+                                    contactList.add(usuario)
+                                }
 
-                    var vel1 = mySubRef.addValueEventListener(object : ValueEventListener {
-                        override fun onDataChange(snapshot: DataSnapshot) {
-
-                            var usuario : Usuario? = snapshot.getValue(Usuario::class.java)
-                            if (usuario != null ) {
-                                contactList.add(usuario)
+                                val adapter = UsuariosAdapter(this@participantesActivity ,contactList)
+                                lista.adapter=adapter
                             }
+                            override fun onCancelled(error: DatabaseError) {
+                                TODO("Not yet implemented")
+                            }
+                        })
 
-                        }
-                        override fun onCancelled(error: DatabaseError) {
-                            TODO("Not yet implemented")
-                        }
-                    })
 
+                    }
                 }
-                val adapter = UsuariosAdapter(this@participantesActivity ,contactList)
-                lista.adapter=adapter
             }
 
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
         })
-
-
     }
 }

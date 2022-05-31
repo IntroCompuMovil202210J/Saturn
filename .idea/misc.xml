@@ -5,9 +5,12 @@
       <map>
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn-main/Saturn-main/app/src/main/res/layout/activity_chats.xml" value="0.23596014492753623" />
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/drawable/arrow.xml" value="0.1" />
+        <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/drawable/bolita_colorida.xml" value="0.1385" />
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/drawable/colorstrokeWhitebackground.xml" value="0.197" />
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/drawable/ic_baseline_arrow_forward_24.xml" value="0.101" />
+        <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/drawable/image_border.xml" value="0.1385" />
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/drawable/roundcorner.xml" value="0.2935" />
+        <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/activity_chats.xml" value="0.1659111514052584" />
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/activity_conversacion.xml" value="0.20199275362318841" />
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/activity_crear_evento.xml" value="0.2210144927536232" />
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/activity_evento.xml" value="0.22" />
@@ -20,7 +23,7 @@
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/activity_registo.xml" value="0.16210739614994935" />
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/activity_seleccionar_lugar.xml" value="0.25" />
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/evento.xml" value="0.16210739614994935" />
-        <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/friends.xml" value="0.2975630611372381" />
+        <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/friends.xml" value="0.5" />
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/my_location.xml" value="0.2210144927536232" />
         <entry key="app/src/main/res/drawable/listgrad.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_log.xml" value="0.18072916666666666" />
