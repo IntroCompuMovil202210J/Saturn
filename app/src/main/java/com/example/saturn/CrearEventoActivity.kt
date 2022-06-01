@@ -183,9 +183,7 @@ class CrearEventoActivity : AppCompatActivity() {
                     month = monthNum.toString()
                     day = datePicker.dayOfMonth.toString()
                     year = datePicker.year.toString()
-                    if (Integer.parseInt(month) >= today.get(Calendar.MONTH) && Integer.parseInt(day) >= today.get(
-                            Calendar.DAY_OF_MONTH
-                        ) && Integer.parseInt(year) >= today.get(Calendar.YEAR)
+                    if (Integer.parseInt(month) >= today.get(Calendar.MONTH) && Integer.parseInt(day) >= today.get(Calendar.DAY_OF_MONTH) && Integer.parseInt(year) >= today.get(Calendar.YEAR)
                     ) {
                         return true
                     } else {

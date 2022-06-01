@@ -66,7 +66,8 @@
                     android:text="TextView"
                     android:textColor="@color/white"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginBottom="50dp"/>
 
                 <TextView
                     android:id="@+id/laPlataforma"
@@ -88,6 +89,7 @@
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/rubik_variable_wght"
                     android:text="TextView"
+                    android:layout_gravity="center"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -108,6 +110,7 @@
                     android:id="@+id/fecha"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/rubik_variable_wght"
@@ -118,41 +121,34 @@
 
 
                 <LinearLayout
-                    android:layout_marginTop="50dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="20dp">
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
 
+                    <org.osmdroid.views.MapView
+                        android:id="@+id/osmMap"
+                        android:layout_width="250dp"
+                        android:layout_height="250dp">
 
-                    <Button
-                        android:id="@+id/participantes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@drawable/colorstroke"
-                        android:fontFamily="@font/rubik_variable_wght"
-                        android:paddingHorizontal="15dp"
-                        android:text="Participantes"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/ubi"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginStart="30dp"
-                        android:background="@drawable/colorstroke"
-                        android:fontFamily="@font/rubik_variable_wght"
-                        android:paddingHorizontal="15dp"
-                        android:text="Ubicación"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                    </org.osmdroid.views.MapView>
 
                 </LinearLayout>
+
+                <Button
+                    android:id="@+id/participantes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/colorstroke"
+                    android:fontFamily="@font/rubik_variable_wght"
+                    android:paddingHorizontal="15dp"
+                    android:text="Participantes"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
 
                 <Button

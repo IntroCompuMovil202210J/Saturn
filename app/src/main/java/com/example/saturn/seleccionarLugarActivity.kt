@@ -139,6 +139,19 @@ class seleccionarLugarActivity : AppCompatActivity() {
         mapa.invalidate()
     }
 
+    override fun onPause() {
+        super.onPause()
+        mapa.onPause()
+        sensorManager.unregisterListener(lightSensorListener);
+        mapa.onCancelPendingInputEvents()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapa.onResume()
+        modeManage()
+    }
+
     private fun searchPlace(lugar : String){
         if(!lugar.isEmpty()){
             try{
@@ -173,7 +186,6 @@ class seleccionarLugarActivity : AppCompatActivity() {
         marker.setAnchor(Marker.ANCHOR_CENTER,Marker.ANCHOR_BOTTOM)
         mapViewController.setZoom(19.0)
         mapViewController.setCenter(place)
-
 
         return marker
     }

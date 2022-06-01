@@ -19,7 +19,6 @@
             android:id="@+id/imagenEvento"
             android:layout_width="120dp"
             android:layout_height="match_parent"
-            android:src="@drawable/download"
             android:scaleType="fitXY"
             android:layout_marginRight="15dp"
             android:adjustViewBounds="true"
