@@ -6,12 +6,12 @@
         <type value="RUNNING_DEVICE_TARGET" />
         <deviceKey>
           <Key>
-            <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="C:\Users\Nico\.android\avd\Pixelito.avd" />
+            <type value="SERIAL_NUMBER" />
+            <value value="adb-R58T11XFWKV-UOTs4j._adb-tls-connect._tcp" />
           </Key>
         </deviceKey>
       </Target>
     </runningDeviceTargetSelectedWithDropDown>
-    <timeTargetWasSelectedWithDropDown value="2022-06-01T17:03:09.296622Z" />
+    <timeTargetWasSelectedWithDropDown value="2022-06-01T17:19:52.971225300Z" />
   </component>
 </project>
