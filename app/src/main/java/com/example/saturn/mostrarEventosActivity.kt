@@ -47,7 +47,7 @@ class mostrarEventosActivity : AppCompatActivity() {
         connect()
 
         lista.setOnItemClickListener { parent, view, position, id ->
-            val intent = Intent(this, EventoActivity::class.java)
+            val intent = Intent(this, eventoEspecificoActivity::class.java)
             intent.putExtra("evento", EventList[position])
             intent.putExtra("owner",owner)
             startActivity(intent)

@@ -131,7 +131,6 @@
                         android:id="@+id/osmMap"
                         android:layout_width="250dp"
                         android:layout_height="250dp">
-
                     </org.osmdroid.views.MapView>
 
                 </LinearLayout>
@@ -152,7 +151,7 @@
 
 
                 <Button
-                    android:id="@+id/registrarseEvento"
+                    android:id="@+id/cancelarRegistro"
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -162,7 +161,7 @@
                     android:background="@drawable/colorstroke"
                     android:fontFamily="@font/rubik_variable_wght"
                     android:paddingHorizontal="15dp"
-                    android:text="Registrarse"
+                    android:text="no participar"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold" />

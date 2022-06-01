@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@null"
+            android:background="@drawable/colorstroke"
 
             android:src="@drawable/controlrecto" />
 
@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/colorstroke"
+            android:background="@null"
             android:src="@drawable/group" />
 
         <ImageButton

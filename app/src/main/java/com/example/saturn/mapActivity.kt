@@ -114,7 +114,7 @@ class mapActivity : AppCompatActivity() {
                     TODO("Not yet implemented")
                 }
             })
-            if(destiny!=null){
+            if(destiny!=null && userMarker == null){
                 drawRoute(newMarker?.position!!,destiny?.position!!)
             }
 
@@ -138,6 +138,16 @@ class mapActivity : AppCompatActivity() {
         roadManager = OSRMRoadManager(this,"ANDROID")
         mGeocoder = Geocoder(baseContext)
 
+
+
+        sensorStuff()
+        setMap()
+        getLastLocation()
+        val policy :StrictMode.ThreadPolicy = StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy)
+
+        mapa.overlays.add(createOverlayEvents())
+
         if(intent.hasExtra("destinoLat")&&intent.hasExtra("destinoLon")){
             bundle= intent.extras!!
             var place : GeoPoint = GeoPoint(bundle?.get("destinoLat") as Double,bundle.get("destinoLon")as Double)
@@ -148,14 +158,6 @@ class mapActivity : AppCompatActivity() {
             var emailUsu : String = bundle.get("usuarioEmail") as String
             buscarUsuaio(emailUsu)
         }
-
-        sensorStuff()
-        setMap()
-        getLastLocation()
-        val policy :StrictMode.ThreadPolicy = StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy)
-
-        mapa.overlays.add(createOverlayEvents())
 
         btnperfil.setOnClickListener{
             mapa.onCancelPendingInputEvents()
@@ -198,19 +200,22 @@ class mapActivity : AppCompatActivity() {
     }
 
     private fun buscarUsuaio(email: String){
-        if(userMarker!= null){
-            mapa.overlays.remove(userMarker)
-        }
+
         myRef=database.getReference(PATH_USERS)
 
-        myRef.addListenerForSingleValueEvent( object: ValueEventListener {
-
+        myRef.addValueEventListener( object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                var mUser= snapshot.getValue(Usuario::class.java)
-                if(mUser != null && mUser.email == email) {
-                    var newPoint : GeoPoint = GeoPoint(mUser.lat as Double,mUser.lon as Double)
-                    userMarker = setMarker(newPoint)
-                    drawRoute(newPoint,destiny?.position!!)
+                for(single:DataSnapshot in snapshot.children){
+                    var mUser= single.getValue(Usuario::class.java)
+                    if(mUser != null && mUser.email == email) {
+                        if(userMarker!= null){
+                            mapa.overlays.remove(userMarker)
+                        }
+                        var newPoint : GeoPoint = GeoPoint(mUser.lat as Double,mUser.lon as Double)
+                        userMarker = setMarker(newPoint)
+                        mapa.overlays.add(userMarker)
+                        drawRoute(newPoint,destiny?.position!!)
+                    }
                 }
             }
 
@@ -301,7 +306,6 @@ class mapActivity : AppCompatActivity() {
         routePoints.add(start)
         routePoints.add(finish)
         var road : Road = roadManager.getRoad(routePoints)
-        var toast = Toast.makeText(this,"Distancia: " + road.mLength + "klm, Duración: "+road.mDuration/60+"min",Toast.LENGTH_LONG).show()
         if(mapa!=null){
             if(roadOverlay!=null){
                 mapa.overlays.remove(roadOverlay)

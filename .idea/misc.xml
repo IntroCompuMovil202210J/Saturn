@@ -14,7 +14,7 @@
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/activity_conversacion.xml" value="0.20199275362318841" />
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/activity_crear_evento.xml" value="0.2210144927536232" />
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/activity_evento.xml" value="0.25" />
-        <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/activity_evento_especifico.xml" value="0.15775972637879435" />
+        <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/activity_evento_especifico.xml" value="0.25" />
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/activity_log.xml" value="0.16210739614994935" />
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/activity_main.xml" value="0.20199275362318841" />
@@ -27,6 +27,7 @@
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/evento.xml" value="0.16210739614994935" />
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/friends.xml" value="0.5" />
         <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/layout/my_location.xml" value="0.2210144927536232" />
+        <entry key="..\:/Users/Nico/Documents/Universidad/Git/Saturn/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1915" />
         <entry key="app/src/main/res/drawable/listgrad.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_log.xml" value="0.18072916666666666" />
         <entry key="app/src/main/res/layout/activity_registo.xml" value="0.18072916666666666" />
