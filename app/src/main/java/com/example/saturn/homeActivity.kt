@@ -39,6 +39,7 @@ class homeActivity : AppCompatActivity() {
     private lateinit var vel : ValueEventListener
 
 
+
     private var proximitySensorListener = object : SensorEventListener {
         override fun onSensorChanged(event: SensorEvent?) {
             var layout = findViewById<FrameLayout>(R.id.frame1)
@@ -79,24 +80,37 @@ class homeActivity : AppCompatActivity() {
         val btnperfil = findViewById<ImageButton>(R.id.persona)
         val btnagregar = findViewById<ImageButton>(R.id.agregar)
 
+
         connect()
 
         btnperfil.setOnClickListener{
+            if(myRef!=null){
+                myRef.removeEventListener(vel)
+            }
             var intent = Intent(this, perfilActivity::class.java)
             startActivity(intent);
         }
 
         btnchats.setOnClickListener{
+            if(myRef!=null){
+                myRef.removeEventListener(vel)
+            }
             var intent = Intent(this, chatsActivity::class.java)
             startActivity(intent);
         }
 
         btnmap.setOnClickListener{
+            if(myRef!=null){
+                myRef.removeEventListener(vel)
+            }
             var intent = Intent(this, mapActivity::class.java)
             startActivity(intent);
         }
 
         btnagregar.setOnClickListener{
+            if(myRef!=null){
+                myRef.removeEventListener(vel)
+            }
             var intent = Intent(this, CrearEventoActivity::class.java)
             startActivity(intent);
         }
@@ -138,10 +152,12 @@ class homeActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         sensorManager.registerListener(proximitySensorListener,proximitySensor,SensorManager.SENSOR_DELAY_FASTEST)
+        connect()
     }
 
     override fun onPause() {
         super.onPause()
         sensorManager.unregisterListener(proximitySensorListener)
+
     }
 }

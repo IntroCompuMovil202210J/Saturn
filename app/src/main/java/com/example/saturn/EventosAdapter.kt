@@ -27,10 +27,9 @@ class EventosAdapter(private val mContext: Context, private val listaEventos: Li
         layout.fechaEvento.text= eventoNuevo.fecha
         layout.participantesEvento.text = eventoNuevo.participantes.toString()
 
-        storageReference.child("images/event/"+eventoNuevo.imageUri).downloadUrl.addOnSuccessListener {
+        storageReference.child("images/events/"+eventoNuevo.imageUri).downloadUrl.addOnSuccessListener {
             Glide.with(this.context).load(it).error(R.drawable.avatar).into(layout.imagenEvento)
         }
-
 
         return layout
     }

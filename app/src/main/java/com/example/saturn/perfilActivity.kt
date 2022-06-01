@@ -31,6 +31,8 @@ class perfilActivity : AppCompatActivity() {
     private lateinit var nickLay : TextView
     private lateinit var plataform : TextView
     private lateinit var storageReference : StorageReference
+    private lateinit var myEvents:Button
+    private lateinit var registeredEvents : Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,6 +62,19 @@ class perfilActivity : AppCompatActivity() {
             val toMain = Intent(this, MainActivity::class.java)
             toMain.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(toMain)
+        }
+
+        myEvents.setOnClickListener(){
+            val intent = Intent(this,mostrarEventosActivity::class.java)
+            intent.putExtra("owner",true)
+            startActivity(intent)
+
+        }
+
+        registeredEvents.setOnClickListener(){
+            val intent = Intent(this,mostrarEventosActivity::class.java)
+            intent.putExtra("owner",false)
+            startActivity(intent)
         }
 
     }
@@ -100,6 +115,8 @@ class perfilActivity : AppCompatActivity() {
         nickLay = findViewById(R.id.nick)
         plataform = findViewById(R.id.plataform)
         storageReference = FirebaseStorage.getInstance().reference
+        myEvents= findViewById(R.id.eventos)
+        registeredEvents = findViewById(R.id.participante)
 
         connect()
     }

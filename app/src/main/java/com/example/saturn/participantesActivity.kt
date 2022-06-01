@@ -36,12 +36,12 @@ class participantesActivity : AppCompatActivity() {
         myRef = database.getReference(PATH_EVENT_PARTICIPANTS+participantesUID)
         vel = myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                contactList.clear()
+
                 if(snapshot.exists()){
                     for(single : DataSnapshot in snapshot.children ){
                         UID = single.getValue()as String
                         UIDS.add(UID)
-
+                        contactList.clear()
                         var mySubRef : DatabaseReference = database.getReference(PATH_USERS+UID)
                         var vel1 = mySubRef.addValueEventListener(object : ValueEventListener {
                             override fun onDataChange(snapshot: DataSnapshot) {
@@ -67,5 +67,17 @@ class participantesActivity : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if(myRef!=null){
+            myRef.removeEventListener(vel)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        connect()
     }
 }

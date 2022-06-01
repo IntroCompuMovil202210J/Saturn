@@ -60,6 +60,7 @@ class mapActivity : AppCompatActivity() {
     private lateinit var mGeocoder: Geocoder
     private var destiny : Marker? = null
     private var newMarker : Marker? = null
+    private var userMarker: Marker? = null
     private var roadOverlay : Polyline? = null
     private lateinit var mAuth : FirebaseAuth
     private lateinit var database : FirebaseDatabase
@@ -67,6 +68,7 @@ class mapActivity : AppCompatActivity() {
     private lateinit var user : FirebaseUser
     private lateinit var fab : View
     private var initial :Boolean = true
+    private lateinit var bundle : Bundle
 
     private var lightSensorListener = object : SensorEventListener{
         override fun onSensorChanged(event: SensorEvent?) {
@@ -112,6 +114,9 @@ class mapActivity : AppCompatActivity() {
                     TODO("Not yet implemented")
                 }
             })
+            if(destiny!=null){
+                drawRoute(newMarker?.position!!,destiny?.position!!)
+            }
 
         }
     }
@@ -133,11 +138,22 @@ class mapActivity : AppCompatActivity() {
         roadManager = OSRMRoadManager(this,"ANDROID")
         mGeocoder = Geocoder(baseContext)
 
+        if(intent.hasExtra("destinoLat")&&intent.hasExtra("destinoLon")){
+            bundle= intent.extras!!
+            var place : GeoPoint = GeoPoint(bundle?.get("destinoLat") as Double,bundle.get("destinoLon")as Double)
+            buscarDestino(place)
+        }
+        if(intent.hasExtra("usuarioEmail")){
+            bundle= intent.extras!!
+            var emailUsu : String = bundle.get("usuarioEmail") as String
+            buscarUsuaio(emailUsu)
+        }
+
         sensorStuff()
         setMap()
         getLastLocation()
         val policy :StrictMode.ThreadPolicy = StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
+        StrictMode.setThreadPolicy(policy)
 
         mapa.overlays.add(createOverlayEvents())
 
@@ -169,6 +185,40 @@ class mapActivity : AppCompatActivity() {
             mapViewController.setZoom(19.0)
             mapViewController.setCenter(newMarker?.position )
         }
+    }
+
+    private fun buscarDestino(p : GeoPoint){
+        if(destiny != null){
+            mapa.overlays.remove(destiny)
+        }
+        destiny=setMarker(p)
+        mapa.overlays.add(destiny)
+        mapa.invalidate()
+
+    }
+
+    private fun buscarUsuaio(email: String){
+        if(userMarker!= null){
+            mapa.overlays.remove(userMarker)
+        }
+        myRef=database.getReference(PATH_USERS)
+
+        myRef.addListenerForSingleValueEvent( object: ValueEventListener {
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var mUser= snapshot.getValue(Usuario::class.java)
+                if(mUser != null && mUser.email == email) {
+                    var newPoint : GeoPoint = GeoPoint(mUser.lat as Double,mUser.lon as Double)
+                    userMarker = setMarker(newPoint)
+                    drawRoute(newPoint,destiny?.position!!)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+
     }
 
     private fun createOverlayEvents(): MapEventsOverlay {
@@ -233,7 +283,8 @@ class mapActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         mapa.onPause()
-        sensorManager.unregisterListener(lightSensorListener);
+        sensorManager.unregisterListener(lightSensorListener)
+
     }
 
     override fun onResume() {

@@ -142,7 +142,6 @@ class seleccionarLugarActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         mapa.onPause()
-        sensorManager.unregisterListener(lightSensorListener);
         mapa.onCancelPendingInputEvents()
     }
 

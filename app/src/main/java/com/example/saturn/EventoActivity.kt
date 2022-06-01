@@ -25,9 +25,11 @@ import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_participantes.*
 import kotlinx.android.synthetic.main.activity_participantes.lista
 import org.osmdroid.bonuspack.routing.RoadManager
+import org.osmdroid.events.MapEventsReceiver
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
+import org.osmdroid.views.overlay.MapEventsOverlay
 import org.osmdroid.views.overlay.Marker
 import org.osmdroid.views.overlay.Polyline
 import org.osmdroid.views.overlay.TilesOverlay
@@ -132,6 +134,32 @@ class EventoActivity : AppCompatActivity() {
 
         sensorStuff()
         setMap()
+    }
+
+    private fun createOverlayEvents(): MapEventsOverlay {
+
+        return MapEventsOverlay(object : MapEventsReceiver {
+            override fun singleTapConfirmedHelper(p: GeoPoint): Boolean {
+                return false
+            }
+
+            override fun longPressHelper(p: GeoPoint): Boolean {
+                p.longitude = evento.lon!!
+                p.latitude = evento.lat!!
+
+                longPressOnMap(p)
+                return true
+            }
+        })
+
+    }
+
+    private fun longPressOnMap(p : GeoPoint){
+
+        var intent = Intent(this,mapActivity::class.java)
+        intent.putExtra("destinoLat", p.latitude)
+        intent.putExtra("destinoLon", p.longitude)
+        startActivity(intent)
     }
 
     private fun sensorStuff(){

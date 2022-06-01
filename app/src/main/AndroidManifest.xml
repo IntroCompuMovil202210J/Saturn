@@ -21,6 +21,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Saturn">
         <activity
+            android:name=".eventoEspecificoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mostrarEventosActivity"
+            android:exported="false" />
+        <activity
             android:name=".participantesActivity"
             android:exported="false" />
         <activity

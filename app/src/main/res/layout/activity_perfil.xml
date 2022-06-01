@@ -32,147 +32,187 @@
             android:textColor="@color/yellow"
             android:textSize="48sp"/>
 
-        <ScrollView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="3">
+            android:layout_height="725dp">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/nick"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="30dp"
-                    android:fontFamily="@font/rubik_variable_wght"
-                    android:text="@string/nickname"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:id="@+id/perfil"
-                    android:layout_width="wrap_content"
-                    android:layout_height="150dp"
-                    android:layout_below="@id/nick"
-                    android:layout_centerHorizontal="true"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/colorstroke"
-                    android:padding="5dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/super_mario" />
-
-                <TextView
-                    android:id="@+id/laNombre"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/perfil"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="25dp"
-                    android:fontFamily="@font/rubik_variable_wght"
-                    android:text="@string/nombre"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/Nom"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/perfil"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="25dp"
-                    android:layout_toRightOf="@+id/laNombre"
-                    android:fontFamily="@font/rubik_variable_wght"
-                    android:text="Albeiro"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/laPlataformas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/laNombre"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="25dp"
-                    android:fontFamily="@font/rubik_variable_wght"
-                    android:text="@string/plataformas"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/plataform"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/laPlataformas"
-                    android:layout_centerHorizontal="true"
-                    android:fontFamily="@font/rubik_variable_wght"
-                    android:text="- Switch"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
-
-        </ScrollView>
-
-        <Button
-            android:id="@+id/logoutbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="1dp"
-            android:layout_weight="0"
-            android:background="@drawable/normalradius"
-            android:backgroundTint="@color/red"
-            android:paddingHorizontal="20dp"
-            android:text="Cerrar sesion" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@color/darkblue"
-            android:orientation="horizontal">
-
-
-            <ImageButton
-                android:id="@+id/arcade"
+            <Button
+                android:id="@+id/logoutbtn"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@null"
-                android:src="@drawable/controlrecto" />
+                android:layout_height="wrap_content"
+                android:layout_below="@id/opciones"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="0"
+                android:background="@drawable/normalradius"
+                android:backgroundTint="@color/red"
+                android:paddingHorizontal="20dp"
+                android:text="Cerrar sesion" />
 
-            <ImageButton
-                android:id="@+id/mapa"
+            <TextView
+                android:id="@+id/nick"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@null"
-                android:src="@drawable/mapa" />
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/rubik_variable_wght"
+                android:text="@string/nickname"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-            <ImageButton
-                android:id="@+id/chats"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@null"
-                android:src="@drawable/group" />
-
-            <ImageButton
-                android:id="@+id/persona"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+            <ImageView
+                android:id="@+id/perfil"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_below="@id/nick"
+                android:layout_centerHorizontal="true"
+                android:adjustViewBounds="true"
                 android:background="@drawable/colorstroke"
-                android:src="@drawable/hito" />
-        </LinearLayout>
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/super_mario" />
 
+            <TextView
+                android:id="@+id/laNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/perfil"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/rubik_variable_wght"
+                android:text="@string/nombre"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/Nom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/perfil"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_toRightOf="@+id/laNombre"
+                android:fontFamily="@font/rubik_variable_wght"
+                android:text="Albeiro"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/laPlataformas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/laNombre"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/rubik_variable_wght"
+                android:text="@string/plataformas"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/plataform"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Nom"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="10dp"
+                android:layout_toRightOf="@+id/laPlataformas"
+                android:fontFamily="@font/rubik_variable_wght"
+                android:text="Switch"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/opciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/plataform"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/eventos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/colorstroke"
+                    android:fontFamily="@font/rubik_variable_wght"
+                    android:paddingHorizontal="15dp"
+                    android:text="Mis eventos"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/participante"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/colorstroke"
+                    android:fontFamily="@font/rubik_variable_wght"
+                    android:paddingHorizontal="15dp"
+                    android:text="participante"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/darkblue"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        >
+
+
+        <ImageButton
+            android:id="@+id/arcade"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:src="@drawable/controlrecto" />
+
+        <ImageButton
+            android:id="@+id/mapa"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:src="@drawable/mapa" />
+
+        <ImageButton
+            android:id="@+id/chats"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:src="@drawable/group" />
+
+        <ImageButton
+            android:id="@+id/persona"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/colorstroke"
+            android:src="@drawable/hito" />
     </LinearLayout>
 
 </FrameLayout>

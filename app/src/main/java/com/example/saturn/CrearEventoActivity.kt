@@ -222,6 +222,7 @@ class CrearEventoActivity : AppCompatActivity() {
             var ref:StorageReference = mStorageRef.child(PATH_EVENT_IMGES+imageUID)
             ref.putFile(imageUri)
             mEvento.imageUri=imageUID
+            mEvento.ownerUID = user?.uid
 
             val intent = Intent(this,seleccionarLugarActivity::class.java)
             intent.putExtra("evento",mEvento)
