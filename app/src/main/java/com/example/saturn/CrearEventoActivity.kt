@@ -236,6 +236,7 @@ class CrearEventoActivity : AppCompatActivity() {
 
         btnchats.setOnClickListener{
             var intent = Intent(this, chatsActivity::class.java)
+            intent.putExtra("user",mAuth.currentUser?.email.toString())
             startActivity(intent);
         }
 

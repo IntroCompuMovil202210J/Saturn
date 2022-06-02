@@ -221,6 +221,7 @@ class EventoActivity : AppCompatActivity() {
 
         btnchats.setOnClickListener{
             var intent = Intent(this, chatsActivity::class.java)
+            intent.putExtra("user",mAuth.currentUser?.email.toString())
             startActivity(intent);
         }
 
@@ -235,6 +236,7 @@ class EventoActivity : AppCompatActivity() {
 
         val cosa : Bundle? = intent.extras
          evento = cosa?.get("evento") as Evento
+
 
 
 

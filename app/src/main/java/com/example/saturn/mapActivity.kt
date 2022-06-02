@@ -173,6 +173,7 @@ class mapActivity : AppCompatActivity() {
 
         btnchats.setOnClickListener{
             val intent = Intent(this, chatsActivity::class.java)
+            intent.putExtra("user",mAuth.currentUser?.email.toString())
             startActivity(intent);
         }
 
