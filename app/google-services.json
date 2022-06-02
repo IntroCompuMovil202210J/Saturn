@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "132708502828",
+    "firebase_url": "https://saturn-compumovil-default-rtdb.firebaseio.com",
     "project_id": "saturn-compumovil",
     "storage_bucket": "saturn-compumovil.appspot.com"
   },

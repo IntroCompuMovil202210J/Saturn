@@ -21,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Saturn">
         <activity
+            android:name=".chat.ChatActivity"
+            android:exported="false" />
+        <activity
             android:name=".eventoEspecificoActivity"
             android:exported="false" />
         <activity
@@ -42,7 +45,7 @@
             android:name=".conversacionActivity"
             android:exported="false" />
         <activity
-            android:name=".chatsActivity"
+            android:name=".chat.chatsActivity"
             android:exported="false" />
         <activity
             android:name=".mapActivity"

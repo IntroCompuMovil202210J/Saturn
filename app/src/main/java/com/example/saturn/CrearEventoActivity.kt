@@ -27,6 +27,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.saturn.chat.chatsActivity
 import com.google.android.gms.location.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
